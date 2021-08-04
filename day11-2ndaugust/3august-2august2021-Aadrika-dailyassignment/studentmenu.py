@@ -1,27 +1,28 @@
 import time
 import re
 studentlist=[]
+
+
+
 class Student:
     def studentdetails():
          name=" "
          rollnum=0
          adminnum=0
-class marks:
-    def stumarks():
-        eng=0
-        hindi=0
-        maths=0
-        science=0
+         eng=0
+         hindi=0
+         maths=0
+         science=0
+         cs=0
     
-
    
-class studentdetails(Student,marks):
-    def addstudentdetails(self,name,rollnum,adminnum,eng,hindi,maths,science):
-        total=eng+hindi+maths+science
+class studentdetails(Student):
+    def addstudentdetails(self,name,rollnum,adminnum,eng,hindi,maths,science,cs):
+        total=eng+hindi+maths+science+cs
         current_local_time=time.strftime("%H:%M:%S",time.localtime())
-        dict1={"name":name,"rollnum":rollnum,"adminnum":adminnum,"eng":eng,"hindi":hindi,"maths":maths,"science":science,"total":total,"addedon":current_local_time}
+        dict1={"name":name,"rollnum":rollnum,"adminnum":adminnum,"eng":eng,"hindi":hindi,"maths":maths,"science":science,"cs":cs,"total":total,"addedon":current_local_time}
         studentlist.append(dict1)
-obj1=studentdetails()
+s1=studentdetails()
 
 
 def validation_student_details(name,roll):
@@ -44,15 +45,16 @@ while(True):
     if choice==1:
         while(True):
             name=input("Enter your name: ")
-            rollnum=(input("enter your rollnum: "))
+            rollnum=(input("enter your roll number: "))
             if validation_student_details(name,rollnum):
                 admisnum=int(input("enter your admin num: "))
                 englis=int(input("enter english marks: "))
                 hindi=int(input("enter hindi marks: "))
                 maths=int(input("enter maths marks: "))
                 science=int(input("enter science marks: "))
+                cs=int(input("enter cs marks: "))
 
-                obj1.addstudentdetails(name,rollnum,admisnum,englis,hindi,maths,science)
+                s1.addstudentdetails(name,rollnum,admisnum,englis,hindi,maths,science,cs)
             else:
                 print("PLease Try again by entering valid name and roll number")
                 continue

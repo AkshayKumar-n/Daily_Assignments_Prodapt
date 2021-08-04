@@ -1,42 +1,47 @@
-from datetime import date
 import time
 import re
+from datetime import date
+
 productlist=[]
-class Products:
+class Products_Details:
     def addProducts(self,proname,prodes,proprice,pmanufacture,manufactdate,expdate):
         current_local_time=time.strftime("%H:%M:%S",time.localtime())
         dict1={"proname":proname,"prodescp":prodes,"proprice":proprice,"pmanufacture":pmanufacture,"manufactdate":manufactdate,"expdate":expdate,"purchased_time":current_local_time}
         productlist.append(dict1)
-pro=Products()
+pro=Products_Details()
 
-def validation_of_product(pname,pprice):
-    val=re.match("([a-z]+)([a-z]+)*([a-z]+)*$",pname)
-    val2=re.match("[0-9]{0,7}$",pprice)
-    if val and val2:
+###################validation function
+def validation_of_product(pname,pprice,desp):
+    valid=re.match("([a-z]+)([a-z]+)*([a-z]+)*$",pname)
+    valid2=re.match("[0-9]{0,7}$",pprice)
+    valid3=re.match("([a-z]+)([a-z]+)*([a-z]+)*$",desp)
+    
+    if valid and valid2 and valid3:
         return True
     else:
         return False
 
-
+################## menu
 while(True):
     print("1. Add products")
-    print("2. view products")
-    print("3. search product by name")
-    print("4. product which expire today")
-    print("5. exit")
+    print("2. View products")
+    print("3. Search product by name")
+    print("4. Product which expire today")
+    print("5. Exit")
     choice=int(input("Enter your choice: "))
     if choice==1:
         while(True):
             proname=input("enter product name: ")
             proprice=input("Enter product price: ")
-            if validation_of_product(proname,proprice):
-                prodescp=input("Enter product description: ")
+            prodescp=input("Enter product description: ")
+            if validation_of_product(proname,proprice,prodescp):
+                
                 promanufacture=input("Enter product manufacturer: ")
                 manufactdate=input("Enter manufacture date: ")
                 expdate=input("Enter expiry date: ")
                 pro.addProducts(proname,prodescp,proprice,promanufacture,manufactdate,expdate)
             else:
-                print("PLease Try again by entering valid name and price")
+                print("Please Try again by entering valid name , price and description")
                 continue
             break
 
@@ -47,7 +52,7 @@ while(True):
         print(list(filter(lambda a:a["proname"]==searchitem,productlist)))
     if choice==4:
         today=date.today()
-        d=today.strftime("%d/%m/%y")
+        d=today.strftime("%d/%m/%Y")
         print(list(filter(lambda i:i["expdate"]==str(d),productlist)))     
 
     if choice==5:
