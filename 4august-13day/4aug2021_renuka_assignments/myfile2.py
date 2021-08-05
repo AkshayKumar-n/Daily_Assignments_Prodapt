@@ -1,0 +1,7 @@
+myfile2=open("file1.txt",'a+')
+i=input("enter a name")
+myfile2.write(i)
+myfile2.seek(0)
+x=myfile2.read()
+print(x)
+myfile2.close()

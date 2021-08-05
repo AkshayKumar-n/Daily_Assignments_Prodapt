@@ -1,0 +1,8 @@
+myfile=open('file1.txt','r+')
+#print(myfile.tell())
+myfile.write("india")
+myfile.seek(0)
+x=myfile.read()
+print(x)
+print(myfile.tell())
+myfile.close()
