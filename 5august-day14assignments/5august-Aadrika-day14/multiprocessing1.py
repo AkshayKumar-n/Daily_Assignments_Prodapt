@@ -17,9 +17,9 @@ def findPrime():
  ############### FINDING PALINDROME BETWEEN 2 TO 500 ###############          
 
 def findPalindrome():
-    
+    logging.info("User had run FIND PALINDROME function using multiprocessing")
     for k in range(start,stop+1):
-        logging.info("User had run FIND PALINDROME function using multiprocessing")
+        
         temp=k
         rev=0
         try:
