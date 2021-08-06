@@ -1,4 +1,5 @@
-import multiprocessing
+import multiprocessing,logging
+logging.basicConfig(filename="multit.log",level=logging.DEBUG)
 start=10
 end=500
 def FindPrimeBetweenNumbers():
@@ -31,5 +32,11 @@ if(__name__=="__main__"):
     p1.start()
     p2.start()
     print("******************")
+    try:
+        logging.info("Threading worked succesfully")
 
+    except:
+        logging.error("Something went wrong")
 
+    finally:
+        print("Everything executed properly")

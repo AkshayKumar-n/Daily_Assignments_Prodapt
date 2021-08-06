@@ -1,7 +1,7 @@
 import threading,logging
+logging.basicConfig(filename="multip.log",level=logging.DEBUG)
 start=10
 end=500
-logging.basicConfig(filename="multi.log",level=logging.DEBUG)
 def FindPrimeBetweenNumbers():
 
     
@@ -11,6 +11,7 @@ def FindPrimeBetweenNumbers():
                 if(i%j==0):
                     break
             else:
+                
                 print(i,end=" ")
 
 def FindPlaindrome():
@@ -25,12 +26,24 @@ def FindPlaindrome():
 
         if(num == reverse):
             print("%d" %num, end =' ')
+if(__name__=="__main__"):
+    t1=threading.Thread(target=FindPrimeBetweenNumbers)
+    t2=threading.Thread(target=FindPlaindrome)
+    t1.start()
+    t2.start()
+    print("******************")
+    try:
+            logging.info("Threading worked succesfully")
 
-t1=threading.Thread(target=FindPrimeBetweenNumbers)
-t2=threading.Thread(target=FindPlaindrome)
-t1.start()
-t2.start()
-print("******************")
-logging.info("Execution of threads completed")
+    except:
+            logging.error("Something went wrong")
+
+    finally:
+            print("Everything executed properly")
+
+
+
+
+
 
 
