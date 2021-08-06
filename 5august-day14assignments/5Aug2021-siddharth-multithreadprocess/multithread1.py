@@ -26,20 +26,20 @@ def FindPlaindrome():
 
         if(num == reverse):
             print("%d" %num, end =' ')
+if(__name__=="__main__"):
+    t1=threading.Thread(target=FindPrimeBetweenNumbers)
+    t2=threading.Thread(target=FindPlaindrome)
+    t1.start()
+    t2.start()
+    print("******************")
+    try:
+            logging.info("Threading worked succesfully")
 
-t1=threading.Thread(target=FindPrimeBetweenNumbers)
-t2=threading.Thread(target=FindPlaindrome)
-t1.start()
-t2.start()
-print("******************")
-try:
-        logging.info("Threading worked succesfully")
+    except:
+            logging.error("Something went wrong")
 
-except:
-        logging.error("Something went wrong")
-
-finally:
-        print("Everything executed properly")
+    finally:
+            print("Everything executed properly")
 
 
 
